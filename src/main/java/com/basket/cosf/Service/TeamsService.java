@@ -20,4 +20,13 @@ public class TeamsService {
     public List<Teams> getAllTeams() {
         return teamsRepository.findAll();
     }
+
+    /**
+     * Retourne une équipe par son identifiant.
+     * @param id l'identifiant de l'équipe
+     * @return l'équipe correspondante, ou null si aucune équipe n'est trouvée
+     */
+    public Teams getTeamById(int id) {
+        return teamsRepository.findById(id);
+    }
 }

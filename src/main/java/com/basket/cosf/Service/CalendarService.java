@@ -2,41 +2,60 @@ package com.basket.cosf.Service;
 
 import com.basket.cosf.Model.Calendar;
 import com.basket.cosf.Repository.CalendarRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class CalendarService {
 
     private final CalendarRepository calendarRepository;
 
-    public CalendarService(CalendarRepository calendarRepository) {
-        this.calendarRepository = calendarRepository;
+
+    public List<Calendar> getAllCalendars() {
+        return calendarRepository.findAllByOrderByMatchDateDesc();
     }
 
     public List<Calendar> getCalendarsBySeasonId(Integer seasonId) {
         return calendarRepository.findAllBySeasonId(seasonId);
     }
 
-    public Calendar getCalendarById(Integer calendarId) {
-        return calendarRepository.findById(calendarId)
-                .orElseThrow(() -> new RuntimeException("Calendar not found with id: " + calendarId));
+    /**
+     * Finds the Last matches.
+     * @return Optional<Calendar> containing the last played match
+     */
+    public Optional<Calendar> getLastPlayedMatch() {
+        return calendarRepository.findAllPlayedMatch(PageRequest.of(0, 50)).stream().findFirst();
     }
 
-//    public Calendar saveCalendar(Calendar calendar) {
-//        return calendarRepository.save(calendar);
-//    }
-//
-//    public void deleteCalendar(Integer calendarId) {
-//        if (!calendarRepository.existsById(calendarId)) {
-//            throw new RuntimeException("Calendar not found with id: " + calendarId);
-//        }
-//        calendarRepository.deleteById(calendarId);
-//    }
-
-    public List<Calendar> getAllCalendars() {
-        return calendarRepository.findAll();
+    /**
+     * Finds all played matches.
+     * @return List<Calendar> containing all played matches
+     */
+    public List<Calendar> getAllPlayedMatch() {
+        return calendarRepository.findAllPlayedMatch(PageRequest.of(0, 50));
     }
+
+    /**
+     * Finds the Next matches.
+     * @return Optional<Calendar> containing the next match
+     */
+    public Optional<Calendar> getnextPlayedMatch() {
+        return calendarRepository.findAllMatchesComing(PageRequest.of(0, 1)).stream().findFirst();
+    }
+
+    /**
+     * Finds all next matches.
+     * @return List<Calendar> containing all next matches
+     */
+    public List<Calendar> getAllnextPlayedMatch() {
+        return calendarRepository.findAllMatchesComing(PageRequest.of(0, 1));
+    }
+
 
 }
