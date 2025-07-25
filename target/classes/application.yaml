@@ -13,3 +13,16 @@ spring:
     properties:
       hibernate:
         default_schema: COSF
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: m.abdoulaye.gueye@gmail.com
+    password: hwfnljuwqlkuqpxt # pas ton vrai mot de passe Gmail !
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
