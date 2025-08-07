@@ -1,4 +1,4 @@
-package com.basket.cosf;
+package com.basket.cosf.Exceptions;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

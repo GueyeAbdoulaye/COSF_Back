@@ -9,7 +9,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/teams")
-@CrossOrigin("*")
 @RequiredArgsConstructor
 public class TeamsController {
 

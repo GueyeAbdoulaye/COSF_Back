@@ -13,7 +13,6 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/joueurs")
-@CrossOrigin("*")
 public class JoueurController {
 
     private final JoueurService joueurService;

@@ -33,6 +33,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             FilterChain filterChain)
             throws ServletException, IOException {
         String authHeader = request.getHeader(AUTHORIZATION);
+        System.out.println("Authorization header: " + authHeader);
         
         // Fix: Proper header validation
         if (authHeader == null || !authHeader.startsWith(BEARER)) {
@@ -57,10 +58,18 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                     SecurityContextHolder.getContext().setAuthentication(authToken);
                 }
+                else {
+                    // If token is invalid, respond with Unauthorized (401)
+                    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                    response.getWriter().write("Invalid or expired JWT token");
+                    return;
+                }
             }
         } catch (Exception e) {
-            // Log the error if needed
-            // Don't throw the exception to avoid exposing security details
+            // Log the exception or handle as needed
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);  // Unauthorized
+            response.getWriter().write("Authentication error: " + e.getMessage());
+            return;
         }
 
         filterChain.doFilter(request, response);

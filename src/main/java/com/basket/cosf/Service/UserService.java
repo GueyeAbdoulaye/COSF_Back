@@ -6,12 +6,12 @@ import com.basket.cosf.Dto.AuthenticationResponse;
 import com.basket.cosf.Dto.UserDto;
 import com.basket.cosf.Model.Role;
 import com.basket.cosf.Model.User;
-import com.basket.cosf.ObjectsValidator;
+import com.basket.cosf.Validators.ObjectsValidator;
+
 import com.basket.cosf.Repository.UserRepository;
 import com.basket.cosf.Service.Interface.AbstractService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -85,6 +85,10 @@ public class UserService implements AbstractService<UserDto> {
         );
 
         final UserDetails user = userRepository.findByEmail(request.getEmail()).get();
+
+        if (user == null) {
+            throw new IllegalArgumentException("User not found with email: " + request.getEmail());
+        }
         final String jwt = jwtUtils.generateToken(user);
         return AuthenticationResponse.builder()
                 .token(jwt)

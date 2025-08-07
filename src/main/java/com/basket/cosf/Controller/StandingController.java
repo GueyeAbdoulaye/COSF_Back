@@ -13,7 +13,6 @@ import java.util.List;
 @RequestMapping("/api/v1/standing")
 @RequiredArgsConstructor
 @RestController
-@CrossOrigin("*")
 public class StandingController {
 
     private final StandingService standingService;
