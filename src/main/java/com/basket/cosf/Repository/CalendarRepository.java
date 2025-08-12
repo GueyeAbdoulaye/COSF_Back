@@ -21,10 +21,10 @@ public interface CalendarRepository extends JpaRepository<Calendar, Integer> {
      * @return
      */
     @Query("SELECT c FROM Calendar c  ORDER BY c.matchDate DESC")
-    List<Calendar> findAllByOrderByMatchDateDesc();
 
+    List<Calendar> findAllByOrderByMatchDateDesc();
     /**
-     * Finds the last played match.
+     * Finds all played match.
      * @param pageable
      * @return
      */

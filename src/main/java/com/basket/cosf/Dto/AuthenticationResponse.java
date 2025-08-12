@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationResponse {
 
+public class AuthenticationResponse {
     private String token;
 
     // Add any other fields you need in the response, such as user details

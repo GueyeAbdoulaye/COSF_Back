@@ -38,6 +38,7 @@ public class UserDto {
     public static UserDto fromEntity(User user){
         //null check
         return UserDto.builder()
+                .Id(user.getId())
                 .username(user.getUsername())
                 .lastname(user.getLastname())
                 .email(user.getEmail())
@@ -48,6 +49,7 @@ public class UserDto {
     public static User toEntity(UserDto userDto) {
         //null check
         return User.builder()
+                .id(userDto.getId())
                 .username(userDto.getUsername())
                 .lastname(userDto.getLastname())
                 .email(userDto.getEmail())

@@ -58,10 +58,7 @@ public class UserService implements AbstractService<UserDto> {
     }
 
     @Override
-    public void delete(Integer id) {
-
-
-    }
+    public void delete(Integer id) {}
 
     public AuthenticationResponse register(UserDto dto) {
         validator.validate(dto);
@@ -70,9 +67,9 @@ public class UserService implements AbstractService<UserDto> {
         user.setRole(Role.USER );
         var savedUser = userRepository.save(user);
 
-        jwtUtils.generateToken(savedUser);
+        String token = jwtUtils.generateToken(savedUser);
         return AuthenticationResponse.builder()
-                .token(jwtUtils.generateToken(savedUser))
+                .token(token)
                 .build();
     }
 

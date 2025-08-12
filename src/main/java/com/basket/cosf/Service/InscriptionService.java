@@ -4,7 +4,7 @@ import com.basket.cosf.Dto.InscriptionDto;
 import com.basket.cosf.Model.Inscription;
 import com.basket.cosf.Repository.InscriptionRepository;
 import com.basket.cosf.Service.Interface.AbstractService;
-import com.basket.cosf.commons.ObjectsValidator;
+import com.basket.cosf.Validators.ObjectsValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

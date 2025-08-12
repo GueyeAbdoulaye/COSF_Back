@@ -1,5 +1,8 @@
 package com.basket.cosf.Dto;
 
+import lombok.Builder;
+
+@Builder
 public class ContactMessageDto {
 
     public String nom;
