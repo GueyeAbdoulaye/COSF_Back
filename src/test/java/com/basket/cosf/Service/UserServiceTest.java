@@ -172,10 +172,9 @@ class UserServiceTest {
 
     @Test
     void testAuthenticateUser_UserNotFound() {
-        // Given
         AuthenticationRequest request = AuthenticationRequest.builder()
-                .email(null)
-                .password(null)
+                .email("absent@test.com")
+                .password("pwd")
                 .build();
 
         Authentication authResult =
@@ -184,15 +183,16 @@ class UserServiceTest {
                 .andReturn(authResult)
                 .once();
 
-        // Mock the user repository to return an empty Optional
         EasyMock.expect(userRepositoryMock.findByEmail(request.getEmail()))
-                .andReturn(null)
+                .andReturn(Optional.empty())
                 .once();
 
-        // Mock the JWT token generation
-        AuthenticationResponse responseResult = userService.authenticate(request);
+        EasyMock.replay(authenticationManagerMock, userRepositoryMock);
 
+        assertThrows(EntityNotFoundException.class, () -> userService.authenticate(request));
 
+        EasyMock.verify(authenticationManagerMock, userRepositoryMock);
+        // Pas d’attente sur jwtUtilsMock ici : il ne doit pas être appelé quand l’utilisateur est absent.
     }
 
 
@@ -272,23 +272,30 @@ class UserServiceTest {
     }
 
     @Test
-    void testDeleteUser() {
-        // Given
+    void testDeleteUser_found() {
         int userId = 1;
 
-        // Mock the user repository delete method
+        EasyMock.expect(userRepositoryMock.existsById(userId)).andReturn(true).once();
         userRepositoryMock.deleteById(userId);
         EasyMock.expectLastCall().once();
 
         EasyMock.replay(userRepositoryMock);
 
-        // When
         userService.delete(userId);
 
-        // Then
         EasyMock.verify(userRepositoryMock);
     }
 
+    @Test
+    void testDeleteUser_notFound() {
+        int userId = 99;
+
+        EasyMock.expect(userRepositoryMock.existsById(userId)).andReturn(false).once();
+        EasyMock.replay(userRepositoryMock);
+
+        assertThrows(EntityNotFoundException.class, () -> userService.delete(userId));
+        EasyMock.verify(userRepositoryMock);
+    }
 
 
 }

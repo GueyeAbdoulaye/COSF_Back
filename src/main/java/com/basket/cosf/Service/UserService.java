@@ -58,13 +58,18 @@ public class UserService implements AbstractService<UserDto> {
     }
 
     @Override
-    public void delete(Integer id) {}
+    public void delete(Integer id) {
+        if (!userRepository.existsById(id)) {
+            throw new EntityNotFoundException("User not found with id: " + id);
+        }
+        userRepository.deleteById(id);
+    }
 
     public AuthenticationResponse register(UserDto dto) {
         validator.validate(dto);
         User user = UserDto.toEntity(dto);
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
-        user.setRole(Role.USER );
+        user.setRole(Role.USER);
         var savedUser = userRepository.save(user);
 
         String token = jwtUtils.generateToken(savedUser);
@@ -81,11 +86,10 @@ public class UserService implements AbstractService<UserDto> {
                 )
         );
 
-        final UserDetails user = userRepository.findByEmail(request.getEmail()).get();
+        UserDetails user = userRepository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new EntityNotFoundException("User not found with email: " + request.getEmail()));
 
-        if (user == null) {
-            throw new IllegalArgumentException("User not found with email: " + request.getEmail());
-        }
+
         final String jwt = jwtUtils.generateToken(user);
         return AuthenticationResponse.builder()
                 .token(jwt)
