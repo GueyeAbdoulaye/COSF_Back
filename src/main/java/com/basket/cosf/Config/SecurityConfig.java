@@ -90,7 +90,7 @@ public class SecurityConfig {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
                         .allowedOriginPatterns("http://localhost:4200")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE")
+                        .allowedMethods("GET","POST","PUT","PATCH","DELETE")
                         .allowedHeaders("*")
                         .allowCredentials(true);
             }
