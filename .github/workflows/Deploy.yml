@@ -30,7 +30,6 @@ jobs:
     permissions:
       contents: write
       packages: write
-      dependency-graph: write   # 👈 indispensable pour la soumission
 
     steps:
       - name: Checkout du dépôt
@@ -72,9 +71,3 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64/v8
           tags: ghcr.io/gueyeabdoulaye/cosf_back:${{ needs.setup-docker-tag.outputs.docker_tag }}
-
-
-      - name: Submit dependency graph
-        uses: advanced-security/maven-dependency-submission-action@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
