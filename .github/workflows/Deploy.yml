@@ -35,6 +35,7 @@ jobs:
           else
             echo "tag=pre-prod" >> $GITHUB_OUTPUT
           fi
+          
 
   build-and-deploy-image:
 
