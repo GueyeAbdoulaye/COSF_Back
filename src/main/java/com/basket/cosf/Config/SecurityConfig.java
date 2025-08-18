@@ -94,18 +94,20 @@
     
             // Origines autorisées - using setAllowedOrigins for exact matches
             config.setAllowedOrigins(List.of(
+                    //Dev en Local
                     "http://localhost:4200",
-                    "http://127.0.0.1:4200",
-                    "http://localhost:3000",
-                    "http://127.0.0.1:3000"
+                    "http://127.0.0.1:4200"
             ));
             
             // Also allow patterns for production domains
             config.setAllowedOriginPatterns(List.of(
+                    // Staging en Production
+                    "https://staging.cosf.fr",
+                    "https://www.staging.cosf.fr",
+
+                    //Production 
                     "https://cosf.fr",
-                    "https://cosf.fr",
-                    "https://www.cosf.fr",
-                    "https://*.cosf.fr"
+                    "https://www.cosf.fr"
             ));
             
             // Méthodes et en-têtes
