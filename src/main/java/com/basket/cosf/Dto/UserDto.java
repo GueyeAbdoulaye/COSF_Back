@@ -7,6 +7,7 @@ import lombok.*;
 
 
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class UserDto {
@@ -39,10 +40,10 @@ public class UserDto {
         //null check
         return UserDto.builder()
                 .Id(user.getId())
-                .username(user.getUsername())
-                .lastname(user.getLastname())
-                .email(user.getEmail())
-                .password(user.getPassword())
+                .username(user.getUsername())  // This returns email due to UserDetails override
+                .lastname(user.getLastname())  // Lombok generated getter
+                .email(user.getEmail())        // Lombok generated getter  
+                .password(user.getPassword())  // UserDetails override, returns password
                 .build();
     }
 
