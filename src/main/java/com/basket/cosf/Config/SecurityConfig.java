@@ -107,7 +107,8 @@
 
                     //Production 
                     "https://cosf.fr",
-                    "https://www.cosf.fr"
+                    "https://www.cosf.fr",
+                    "https://basket.cosf.fr"
             ));
             
             // Méthodes et en-têtes
