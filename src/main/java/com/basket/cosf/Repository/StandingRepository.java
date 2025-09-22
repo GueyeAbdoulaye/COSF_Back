@@ -14,6 +14,6 @@ public interface StandingRepository extends JpaRepository<Standing, Integer> {
      * @param seasonId the ID of the season
      * @return a list of standings for the specified season
      */
-    @Query("SELECT s FROM Standing s Where seasonId = :seasonId ORDER BY s.points DESC")
+    @Query("SELECT s FROM Standing s Where seasonId = :seasonId ORDER BY s.points DESC, s.pointDifference DESC, s.pointScored DESC")
     List<Standing> findAllBySeasonId(Integer seasonId);
 }
