@@ -34,9 +34,17 @@ public class CalendarService implements AbstractService<Calendar> {
      * @return Optional<Calendar> containing the last played match
      */
     public Optional<Calendar> getLastPlayedMatch() {
-        return calendarRepository.findAllPlayedMatch(PageRequest.of(0, 50)).stream().findFirst();
+        return calendarRepository.findAllPlayedMatch(PageRequest.of(0, 1)).stream().findFirst();
     }
 
+
+    /**
+     * Finds the Next matches.
+     * @return Optional<Calendar> containing the next match
+     */
+    public Optional<Calendar> getnextPlayedMatch() {
+        return calendarRepository.findAllMatchesComing(PageRequest.of(0, 1)).stream().findFirst();
+    }
     /**
      * Finds all played matches.
      * @return List<Calendar> containing all played matches
@@ -46,19 +54,11 @@ public class CalendarService implements AbstractService<Calendar> {
     }
 
     /**
-     * Finds the Next matches.
-     * @return Optional<Calendar> containing the next match
-     */
-    public Optional<Calendar> getnextPlayedMatch() {
-        return calendarRepository.findAllMatchesComing(PageRequest.of(0, 1)).stream().findFirst();
-    }
-
-    /**
      * Finds all next matches.
      * @return List<Calendar> containing all next matches
      */
     public List<Calendar> getAllnextPlayedMatch() {
-        return calendarRepository.findAllMatchesComing(PageRequest.of(0, 1));
+        return calendarRepository.findAllMatchesComing(PageRequest.of(0, 50 ));
     }
 
     /**

@@ -1,0 +1,14 @@
+/home/ag/Documents/PFE_2025/COSF_Back/src/test/java/com/basket/cosf/Repository/CalendarRepositoryTest.java
+/home/ag/Documents/PFE_2025/COSF_Back/src/test/java/com/basket/cosf/Repository/InscriptionRepositoryTest.java
+/home/ag/Documents/PFE_2025/COSF_Back/src/test/java/com/basket/cosf/Repository/JoueurRepositoryTest.java
+/home/ag/Documents/PFE_2025/COSF_Back/src/test/java/com/basket/cosf/Repository/SeasonRepositoryTest.java
+/home/ag/Documents/PFE_2025/COSF_Back/src/test/java/com/basket/cosf/Repository/StandingRepositoryTest.java
+/home/ag/Documents/PFE_2025/COSF_Back/src/test/java/com/basket/cosf/Repository/TeamsRepositoryTest.java
+/home/ag/Documents/PFE_2025/COSF_Back/src/test/java/com/basket/cosf/Repository/UserRepositoryTest.java
+/home/ag/Documents/PFE_2025/COSF_Back/src/test/java/com/basket/cosf/Service/CalendarServiceTest.java
+/home/ag/Documents/PFE_2025/COSF_Back/src/test/java/com/basket/cosf/Service/EmailServiceTest.java
+/home/ag/Documents/PFE_2025/COSF_Back/src/test/java/com/basket/cosf/Service/InscriptionServiceTest.java
+/home/ag/Documents/PFE_2025/COSF_Back/src/test/java/com/basket/cosf/Service/JoueurServiceTest.java
+/home/ag/Documents/PFE_2025/COSF_Back/src/test/java/com/basket/cosf/Service/StandingServiceTest.java
+/home/ag/Documents/PFE_2025/COSF_Back/src/test/java/com/basket/cosf/Service/TeamsServiceTest.java
+/home/ag/Documents/PFE_2025/COSF_Back/src/test/java/com/basket/cosf/Service/UserServiceTest.java

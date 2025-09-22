@@ -1,0 +1,14 @@
+com/basket/cosf/Repository/StandingRepositoryTest.class
+com/basket/cosf/Service/JoueurServiceTest.class
+com/basket/cosf/Repository/CalendarRepositoryTest.class
+com/basket/cosf/Service/CalendarServiceTest.class
+com/basket/cosf/Service/TeamsServiceTest.class
+com/basket/cosf/Repository/UserRepositoryTest.class
+com/basket/cosf/Repository/TeamsRepositoryTest.class
+com/basket/cosf/Service/InscriptionServiceTest.class
+com/basket/cosf/Service/EmailServiceTest.class
+com/basket/cosf/Service/UserServiceTest.class
+com/basket/cosf/Repository/JoueurRepositoryTest.class
+com/basket/cosf/Repository/SeasonRepositoryTest.class
+com/basket/cosf/Service/StandingServiceTest.class
+com/basket/cosf/Repository/InscriptionRepositoryTest.class

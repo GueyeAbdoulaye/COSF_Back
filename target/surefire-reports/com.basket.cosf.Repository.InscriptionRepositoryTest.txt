@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.basket.cosf.Repository.InscriptionRepositoryTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.539 s -- in com.basket.cosf.Repository.InscriptionRepositoryTest
